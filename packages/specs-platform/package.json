@@ -1,6 +1,6 @@
 {
   "name": "@mir-code/specs-platform",
-  "version": "0.0.0-development",
+  "version": "1.0.1",
   "description": "Specs Platform — documentação de specs/features, discoveries e drawings com UI local e disparo de agents (Claude Code / Cursor).",
   "type": "module",
   "license": "MIT",
