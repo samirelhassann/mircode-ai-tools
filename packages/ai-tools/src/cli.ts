@@ -5,6 +5,7 @@ import { Command } from 'commander'
 import pc from 'picocolors'
 import { runInteractive } from './interactive.js'
 import { findTool, tools } from './registry.js'
+import { runUpdate } from './update.js'
 
 const { version } = JSON.parse(
   readFileSync(path.join(findPackageRoot(import.meta.url), 'package.json'), 'utf8'),
@@ -42,6 +43,14 @@ program
     if (!tool) throw new Error(`tool desconhecida: ${toolId}. Rode \`mircode-ai list\`.`)
     await program.parseAsync([tool.id, 'install', ...args], { from: 'user' })
   })
+
+program
+  .command('update')
+  .description(
+    'Atualiza o mircode-ai e as tools instaladas globalmente para a última versão do npm.',
+  )
+  .option('--check', 'Só mostra o que está desatualizado, sem instalar.', false)
+  .action((opts: { check: boolean }) => runUpdate(opts))
 
 program
   .command('list')
