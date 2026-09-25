@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/samirelhassann/mircode-ai-tools/compare/@mir-code/ai-tools@1.0.0...@mir-code/ai-tools@1.1.0) (2026-09-25)
+
+### Features
+
+* **ai-tools:** comando mircode-ai update ([f160902](https://github.com/samirelhassann/mircode-ai-tools/commit/f160902cd20848841900af96f00546892a96bc6a))
+
 ## 1.0.0 (2026-09-25)
 
 ### Features
