@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "noEmit": true,
+    // O toolkit-core é privado: apontar para o source faz o tsup embutir os
+    // tipos dele no dist/index.d.ts publicado.
+    "paths": {
+      "@mir-code/toolkit-core": ["../../internal/toolkit-core/src/index.ts"]
+    }
+  },
+  "include": ["src"]
+}

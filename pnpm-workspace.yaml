@@ -1,0 +1,5 @@
+packages:
+  # Pacotes publicados no npm (@mir-code/*)
+  - 'packages/*'
+  # Pacotes internos (private) — empacotados dentro dos pacotes publicados no build
+  - 'internal/*'

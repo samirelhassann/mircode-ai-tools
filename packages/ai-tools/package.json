@@ -1,0 +1,37 @@
+{
+  "name": "@mir-code/ai-tools",
+  "version": "0.0.0-development",
+  "description": "CLI `mircode-ai` — instala e opera as ferramentas de IA da mircode (@mir-code/*) por menu interativo ou linha de comando.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "mircode-ai": "./dist/cli.js"
+  },
+  "files": ["dist"],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --passWithNoTests",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.9.1",
+    "@mir-code/specs-platform": "workspace:^",
+    "commander": "^12.1.0",
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@mir-code/toolkit-core": "workspace:*",
+    "@types/node": "^22.10.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.5"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

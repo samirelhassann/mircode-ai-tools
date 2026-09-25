@@ -1,0 +1,6 @@
+export { defineTool } from './tool.js'
+export type { ToolAction, ToolActionContext, ToolDefinition } from './tool.js'
+export { log } from './log.js'
+export { copyIfAbsent, copyReplacing, ensureGitignore, ensureSymlink, exists } from './fs.js'
+export type { SymlinkResult } from './fs.js'
+export { findPackageRoot } from './package-root.js'

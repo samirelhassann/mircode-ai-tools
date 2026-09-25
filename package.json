@@ -1,0 +1,41 @@
+{
+  "name": "mircode-ai-tools",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Monorepo das ferramentas de IA da mircode — CLI `mircode-ai` e pacotes instaláveis (@mir-code/*).",
+  "type": "module",
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev:specs": "pnpm --filter @mir-code/specs-platform dev",
+    "link:global": "node scripts/link.mjs link",
+    "unlink:global": "node scripts/link.mjs unlink",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "lint": "biome lint .",
+    "check": "biome check .",
+    "check:fix": "biome check --write .",
+    "clean": "pnpm -r clean",
+    "release": "node scripts/release/release.mjs",
+    "release:dry": "node scripts/release/release.mjs --dry-run",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
+    "@semantic-release/changelog": "^7.0.0",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/exec": "^7.1.0",
+    "@semantic-release/git": "^11.0.1",
+    "@semantic-release/github": "^12.0.10",
+    "@semantic-release/release-notes-generator": "^14.1.1",
+    "conventional-changelog-conventionalcommits": "^9.3.1",
+    "husky": "^9.1.7",
+    "semantic-release": "^25.0.9",
+    "typescript": "^5.7.0"
+  }
+}

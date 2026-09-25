@@ -1,0 +1,8 @@
+{
+  "title": "Exemplo",
+  "description": "Feature de demonstração — ilustra o formato de specs renderizadas pela Specs Platform.",
+  "icon": "sparkles",
+  "pages": [
+    "feat-exemplo-primeira-task"
+  ]
+}

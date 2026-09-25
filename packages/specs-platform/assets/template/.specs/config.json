@@ -1,0 +1,39 @@
+{
+  "agent": {
+    "cli": "claude",
+    "commands": {
+      "claude": "claude {model} {effort} --agent feature-runner \"{prompt}\"",
+      "cursor": "cursor-agent {model} \"Use the feature-runner subagent. {prompt}\""
+    },
+    "modelsCommand": {
+      "cursor": "cursor-agent --list-models"
+    },
+    "models": {
+      "claude": [
+        "opus",
+        "sonnet",
+        "haiku",
+        "fable"
+      ]
+    },
+    "openTerminal": "osascript",
+    "cwd": ".",
+    "scopes": {
+      "feature": "Execute a feature \"{featureTitle}\" ({featurePath}). Se houver task em progresso, continue de onde parou; senão, escolha a próxima task em pages[] do meta.json.",
+      "featureNoPause": "Execute a feature \"{featureTitle}\" ({featurePath}) por inteiro, sem pausar entre tasks. Continue executando cada próxima task pendente do meta.json automaticamente até completar todas. NÃO commite nada em nenhum momento: nenhum commit por task, nenhum push. Deixe todas as alterações de todas as tasks no working tree, sem commit, para um único code review no final. Os testes E2E e a solicitação de code review devem ser feitos apenas ao final de todas as tasks.",
+      "task": "Execute a task {featurePath}{task}.md. Se já houver trabalho em progresso nela, continue de onde parou."
+    },
+    "defaultExecutionMode": "inline",
+    "sound": true
+  },
+  "prototype": null,
+  "review": {
+    "openCommand": "cursor --goto {path}:{line}"
+  },
+  "theme": "dark",
+  "warnBelowWidth": 1024,
+  "featuresDir": ".specs/specs",
+  "discoveriesDir": ".specs/discoveries",
+  "drawingsDir": ".specs/drawings",
+  "port": 4321
+}

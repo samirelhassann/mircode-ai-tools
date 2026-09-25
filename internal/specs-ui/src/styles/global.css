@@ -1,0 +1,201 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+  color-scheme: dark;
+
+  /* Base tokens (extraídos do protótipo Pencil `hTnKm` / `ga8vA`) */
+  --bg-primary: #111111;
+  --bg-surface: #151515;
+  --bg-card: #1f1f1f;
+  --border: #2a2a2a;
+
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+
+  --accent: #986dff;
+  --accent-subtle: rgba(152, 109, 255, 0.1);
+  --accent-subtle-weak: rgba(152, 109, 255, 0.05);
+
+  --status-pending: #9ca3af;
+  --status-in-progress: #ff9a6d;
+  --status-in-progress-bg: rgba(255, 154, 109, 0.1);
+  --status-in-progress-bg-modal: rgba(255, 154, 109, 0.08);
+  --status-completed: #8eff6d;
+  --status-blocked: #ef4444;
+
+  --modal-overlay: rgba(0, 0, 0, 0.5);
+
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* ---------------------------------------------------------------------
+   * Tokens shadcn/ui — mapeados na paleta dark acima.
+   * `--accent` (roxo) já é usado como cor de marca em todo o app, então a
+   * superfície de hover do shadcn mora em `--surface-hover` e só o alias
+   * Tailwind (`--color-accent`) aponta para ela.
+   * ------------------------------------------------------------------- */
+  --surface-hover: rgba(255, 255, 255, 0.06);
+
+  --sidebar: var(--bg-surface);
+  --sidebar-foreground: var(--text-secondary);
+  --sidebar-primary: var(--accent);
+  --sidebar-primary-foreground: var(--bg-surface);
+  --sidebar-accent: var(--surface-hover);
+  --sidebar-accent-foreground: var(--text-primary);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--accent);
+}
+
+@theme inline {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Semânticos shadcn/ui */
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  --color-card: var(--bg-card);
+  --color-card-foreground: var(--text-primary);
+  --color-popover: var(--bg-card);
+  --color-popover-foreground: var(--text-primary);
+  --color-primary: var(--accent);
+  --color-primary-foreground: var(--bg-surface);
+  --color-secondary: var(--bg-card);
+  --color-secondary-foreground: var(--text-primary);
+  --color-muted: var(--bg-card);
+  --color-muted-foreground: var(--text-secondary);
+  --color-accent: var(--surface-hover);
+  --color-accent-foreground: var(--text-primary);
+  --color-destructive: var(--status-blocked);
+  --color-border: var(--border);
+  --color-input: var(--border);
+  --color-ring: var(--accent);
+
+  /* Sidebar (shadcn/ui) */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Status das specs */
+  --color-status-pending: var(--status-pending);
+  --color-status-in-progress: var(--status-in-progress);
+  --color-status-in-progress-bg: var(--status-in-progress-bg);
+  --color-status-completed: var(--status-completed);
+  --color-status-blocked: var(--status-blocked);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  overflow: hidden; /* scroll interno por coluna */
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Scrollbars sutis */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
+
+/* Foco acessível */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Respeita prefers-reduced-motion globalmente */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Highlight.js dark theme (tema simples inline para não adicionar CSS extra) */
+.hljs {
+  color: #f9fafb;
+  background: transparent;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-name,
+.hljs-tag {
+  color: #986dff;
+}
+.hljs-string,
+.hljs-title,
+.hljs-section,
+.hljs-attribute,
+.hljs-literal,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-addition {
+  color: #8eff6d;
+}
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion,
+.hljs-meta {
+  color: #6b7280;
+}
+.hljs-number,
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #ff9a6d;
+}
+.hljs-strong {
+  font-weight: 600;
+}
+.hljs-emphasis {
+  font-style: italic;
+}

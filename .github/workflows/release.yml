@@ -1,0 +1,40 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+# Um release por vez: cada pacote comita a própria versão de volta na main.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: write # tags, commit do CHANGELOG/versão
+  issues: write # comentário de falha do @semantic-release/github
+  pull-requests: write
+  id-token: write # provenance do npm
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # o semantic-release precisa do histórico e das tags
+          persist-credentials: true
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm test
+      - name: Release por pacote
+        run: pnpm release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
