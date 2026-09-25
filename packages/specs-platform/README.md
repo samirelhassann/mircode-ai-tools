@@ -50,7 +50,7 @@ O `specs install` grava no seu projeto:
 ### Atualizar
 
 ```bash
-npm i -g @mir-code/specs-platform@latest   # nova versão da UI/server
+mircode-ai update                          # ou: npm i -g @mir-code/specs-platform@latest
 specs install                             # propaga agents/skills novos para o projeto
 ```
 

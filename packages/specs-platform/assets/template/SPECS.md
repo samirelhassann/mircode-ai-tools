@@ -135,7 +135,7 @@ Abaixo há um seletor **Modelo** populado automaticamente (lembrado por sessão,
 ## Atualizar
 
 ```bash
-npm i -g @mir-code/specs-platform@latest   # atualiza o CLI (UI + server)
+mircode-ai update                         # atualiza o CLI (ou: npm i -g @mir-code/specs-platform@latest)
 specs install                             # atualiza agents/skills do projeto
 ```
 
