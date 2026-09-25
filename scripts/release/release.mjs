@@ -62,6 +62,20 @@ if (only && !publishable.includes(only)) {
   process.exit(1)
 }
 
+// O semantic-release cria o commit de versão e a tag ANTES do publish. Um erro
+// que só o registry detecta deixaria tag/commit sem pacote no npm — então o que
+// dá para checar localmente é checado aqui, antes de qualquer pacote rodar.
+const problems = ordered.flatMap((name) => {
+  const { pkg } = workspace.get(name)
+  const url = typeof pkg.repository === 'string' ? pkg.repository : pkg.repository?.url
+  // A provenance do npm exige `repository.url` igual ao repositório do GitHub.
+  return url ? [] : [`${name}: falta "repository.url" no package.json (exigido pela provenance)`]
+})
+if (problems.length > 0) {
+  console.error(`✗ Release abortado antes de começar:\n  ${problems.join('\n  ')}`)
+  process.exit(1)
+}
+
 const results = []
 for (const name of ordered.filter((n) => !only || n === only)) {
   const { dir } = workspace.get(name)
@@ -75,7 +89,9 @@ for (const name of ordered.filter((n) => !only || n === only)) {
       '@semantic-release/exec',
       {
         execCwd: dir,
-        prepareCmd: 'npm pkg set version=${nextRelease.version}',
+        // O `npm pkg set` reformata o JSON; o biome devolve ao estilo do repo.
+        prepareCmd:
+          'npm pkg set version=${nextRelease.version} && pnpm exec biome format --write package.json',
         // `pnpm publish` (não `npm publish`) para converter `workspace:^` na versão real.
         publishCmd: 'pnpm publish --no-git-checks --access public',
       },

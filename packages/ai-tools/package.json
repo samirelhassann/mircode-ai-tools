@@ -4,6 +4,15 @@
   "description": "CLI `mircode-ai` — instala e opera as ferramentas de IA da mircode (@mir-code/*) por menu interativo ou linha de comando.",
   "type": "module",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samirelhassann/mircode-ai-tools.git",
+    "directory": "packages/ai-tools"
+  },
+  "homepage": "https://github.com/samirelhassann/mircode-ai-tools/tree/main/packages/ai-tools#readme",
+  "bugs": {
+    "url": "https://github.com/samirelhassann/mircode-ai-tools/issues"
+  },
   "bin": {
     "mircode-ai": "./dist/cli.js"
   },

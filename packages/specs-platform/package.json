@@ -1,9 +1,18 @@
 {
   "name": "@mir-code/specs-platform",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Specs Platform — documentação de specs/features, discoveries e drawings com UI local e disparo de agents (Claude Code / Cursor).",
   "type": "module",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samirelhassann/mircode-ai-tools.git",
+    "directory": "packages/specs-platform"
+  },
+  "homepage": "https://github.com/samirelhassann/mircode-ai-tools/tree/main/packages/specs-platform#readme",
+  "bugs": {
+    "url": "https://github.com/samirelhassann/mircode-ai-tools/issues"
+  },
   "bin": {
     "specs": "./dist/cli.js"
   },
@@ -16,11 +25,7 @@
     },
     "./package.json": "./package.json"
   },
-  "files": [
-    "dist",
-    "assets",
-    "scripts"
-  ],
+  "files": ["dist", "assets", "scripts"],
   "publishConfig": {
     "access": "public"
   },
